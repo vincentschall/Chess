@@ -107,33 +107,19 @@ class GameState():
             kingRow = self.blackKingLocation[0]
             kingCol = self.blackKingLocation[1]  
         if self.inCheck:
-            if len(self.checks) == 1: #only 1 check, block check or move king
-                moves = self.getAllPossibleMoves()
-                #to block a check you must move a piece into one of the squares between the enemy piece and king
-                check = self.checks[0]
-                checkRow = check[0]
-                checkCol = check[1]
-                pieceChecking = self.board[checkRow][checkCol] #enemy piece causing the check
-                validSquares = [] #squares that pieces can move to
-                #if knight, must capture knight or move king, other pieces can be blocked
-                if pieceChecking[1] == 'N':
-                    validSquares = [(checkRow, checkCol)]    
-                else:
-                    for i in range(1, 8):
-                        validSquare = (kingRow + check[2] * i, kingCol + check[3] * i) #check[2] and check[3] are the check directions
-                        validSquares.append(validSquare)
-                        if validSquare[0] == checkRow and validSquare[1] == checkCol:
-                            break
-                #get rid of any moves that don't block check or move king
-                for i in range(len(moves) - 1, -1, -1): #go through backwards when you are removing from a list as iterating
-                     if moves[i].pieceMoved[1] != 'K': #move doesn't move king so it must be blocked or captured
-                        if not (moves[i].endRow, moves[i].endCol) in validSquares: #move doesn't block the check or capture piece
-                            moves.remove(moves[i])   
-            else: #double check, king has to move
-                self.getKingMoves(kingRow, kingCol, moves)      
-        else: #not in check so all moves are fine
             moves = self.getAllPossibleMoves()
-            
+            # For each move, check if it leaves the king in check
+            for i in range(len(moves)-1, -1, -1):
+                self.makeMove(moves[i])
+                self.whiteToMove = not self.whiteToMove # Switch turn to check for opponent's check 
+                inCheck, _, _ = self.checkForPinsAndChecks()
+                self.whiteToMove = not self.whiteToMove # Switch back 
+                self.undoMove()
+                if inCheck:
+                    moves.remove(moves[i])
+        else:
+            moves = self.getAllPossibleMoves()
+
         return moves
         
     '''
