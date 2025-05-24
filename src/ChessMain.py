@@ -16,7 +16,7 @@ Initialize a global dictionaty of images. This will be called exactly once in th
 def loadImages():
     pieces = ['wP','wK','wN', 'wB','wQ','wR','bP','bK','bB','bR', 'bN', 'bQ']
     for piece in pieces:    
-        IMAGES[piece] = p.transform.scale(p.image.load("chess/images/" + piece + ".png"), (SQ_SIZE, SQ_SIZE))
+        IMAGES[piece] = p.transform.scale(p.image.load("images/" + piece + ".png"), (SQ_SIZE, SQ_SIZE))
     #we can now access an image by saying 'IMAGES['wP']'
 
 '''
@@ -29,7 +29,7 @@ def main():
     screen.fill(p.Color("white"))
     
     p.display.set_caption("Chess Engine")
-    p.display.set_icon(p.image.load("chess/images/bP.png"))
+    p.display.set_icon(p.image.load("images/bP.png"))
     
     gs = ChessEngine.GameState()
     validMoves = gs.getValidMoves()
