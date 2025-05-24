@@ -52,7 +52,6 @@ class GameState():
             'blackQueenside': self.blackCastleQueenside
         }
 
-
         self.board[move.startRow][move.startCol] = "--"
         self.board[move.endRow][move.endCol] = move.pieceMoved
         self.moveLog.append(move)
@@ -94,7 +93,17 @@ class GameState():
                 self.blackCastleQueenside = False
             elif move.startRow == 0 and move.startCol == 7:
                 self.blackCastleKingside = False
-        
+        if move.pieceCaptured == 'wR':
+            if move.endRow == 7 and move.endCol == 0:
+                self.whiteCastleQueenside = False
+            elif move.endRow == 7 and move.endCol == 7:
+                self.whiteCastleKingside = False
+        elif move.pieceCaptured == 'bR':
+            if move.endRow == 0 and move.endCol == 0:
+                self.blackCastleQueenside = False
+            elif move.endRow == 0 and move.endCol == 7:
+                self.blackCastleKingside = False
+
         # castling 
         if move.isCastleMove:
             # kingside 
