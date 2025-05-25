@@ -9,6 +9,7 @@
 
   - To make a move: select a start square (mouse) and then an end square (mouse). Drag-and-drop feature scheduled.
   - To undo a move: Press `z`.
+  - To reset the board (delete all moves made): Press `r`.
 
 ## Additional information
 
