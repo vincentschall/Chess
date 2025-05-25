@@ -76,8 +76,13 @@ def main():
                     gs.undoMove()    
                     moveMade = True
                     animate = False
-                #if e.key == p.K_r: # reset when 'r' is pressed 
-                    
+                if e.key == p.K_r: # reset when 'r' is pressed 
+                    gs = ChessEngine.GameState()
+                    validMoves = gs.getValidMoves
+                    squareSelected = ()
+                    playerClicks = []
+                    moveMade = False
+                    animate = False
                     
         if moveMade:
             if animate:
