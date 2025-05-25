@@ -22,7 +22,7 @@
   - [x] Special moves: castling
   - [x] Special moves: en passant
   - [x] Special moves: pawn promotion
-  - [ ] Square highlighting / animations
+  - [x] Square highlighting / animations
   - [ ] Coding an engine: evaluating moves
   - [ ] Integrating engine into UI (bar, review feature)
   - [ ] Uploading PGN files for rewiew
