@@ -94,8 +94,8 @@ def drawGameState(screen, gs):
 Draw the squares on the board.
 '''
 def drawBoard(screen):
-    white = (227,193,111)  # RGB for white
-    black = (184,139,74)   # RGB for black
+    white = (255,255,255)  # RGB for white
+    black = (186,186,180)   # RGB for black
     colors = [white, black]
     for r in range(DIMENSION):
         for c in range(DIMENSION):
