@@ -24,7 +24,7 @@
   - [x] Special moves: en passant
   - [x] Special moves: pawn promotion
   - [x] Square highlighting
-  - [ ] animations
+  - [x] animations
   - [ ] Move notation 
   - [ ] Coding an engine: evaluating moves
   - [ ] Integrating engine into UI (bar, review feature)
