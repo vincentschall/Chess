@@ -13,10 +13,11 @@
 ## Additional information
 
   - Pawn promotion: currently auto-promotes to queen.
+  - Moves are displayed on the console, planned to be integrated into UI.
 
 ## Roadmap
 
-  - [x] Make the UI: background, piece images
+  - [x] Create the UI: background, piece images
   - [x] User input: making moves 
   - [x] Only allowing legal moves 
   - [x] Special moves: castling
@@ -24,6 +25,7 @@
   - [x] Special moves: pawn promotion
   - [x] Square highlighting
   - [ ] animations
+  - [ ] Move notation 
   - [ ] Coding an engine: evaluating moves
   - [ ] Integrating engine into UI (bar, review feature)
   - [ ] Uploading PGN files for rewiew
