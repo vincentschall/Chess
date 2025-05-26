@@ -42,6 +42,8 @@ def main():
     sqSelected = () #keeps track of the last click of the user (tupel: row, col)
     playerClicks = [] #two tuples
     
+    gameOver = False
+
     while(running):
         for e in p.event.get():
             if e.type == p.QUIT:
@@ -49,27 +51,28 @@ def main():
                 
             #mouse handlers
             elif e.type == p.MOUSEBUTTONDOWN:
-                location = p.mouse.get_pos() #x, y location of the mouse
-                col = location[0] // SQ_SIZE
-                row = location[1] // SQ_SIZE   
-                if sqSelected == (row, col):
-                    sqSelected = () #deselect
-                    playerClicks = []    
-                else:
-                    sqSelected = (row, col)
-                    playerClicks.append(sqSelected) #append for both 1st and 2nd clicks
-                if len(playerClicks) == 2: #after 2nd click
-                    move = ChessEngine.Move(playerClicks[0], playerClicks[1], gs.board)
-                    for i in range(len(validMoves)):
-                        if move == validMoves[i]:
-                            gs.makeMove(validMoves[i])
-                            moveMade = True
-                            animate = True
-                            print(move.getChessNotation())
-                            sqSelected = () #reset user clicks
-                            playerClicks = []     
-                    if not moveMade:
-                        playerClicks = [sqSelected]
+                if not gameOver:
+                    location = p.mouse.get_pos() #x, y location of the mouse
+                    col = location[0] // SQ_SIZE
+                    row = location[1] // SQ_SIZE   
+                    if sqSelected == (row, col):
+                        sqSelected = () #deselect
+                        playerClicks = []    
+                    else:
+                        sqSelected = (row, col)
+                        playerClicks.append(sqSelected) #append for both 1st and 2nd clicks
+                    if len(playerClicks) == 2: #after 2nd click
+                        move = ChessEngine.Move(playerClicks[0], playerClicks[1], gs.board)
+                        for i in range(len(validMoves)):
+                            if move == validMoves[i]:
+                                gs.makeMove(validMoves[i])
+                                moveMade = True
+                                animate = True
+                                print(move.getChessNotation())
+                                sqSelected = () #reset user clicks
+                                playerClicks = []     
+                        if not moveMade:
+                            playerClicks = [sqSelected]
             #keyboard handlers          
             elif e.type == p.KEYDOWN:
                 if e.key == p.K_z: #undo when 'z' is pressed
@@ -91,6 +94,20 @@ def main():
             moveMade = False
                   
         drawGameState(screen, gs, validMoves, sqSelected, gs.moveLog[-1] if gs.moveLog else '')
+
+        if gs.checkmate:
+            gameOver = True
+            if gs.whiteToMove:
+                drawText(screen, 'Black wins by checkmate')
+            else:
+                drawText(screen, 'White wins by checkmate')
+        elif gs.stalemate:
+            gameOver = True
+            drawText(screen, 'Draw by stalemate')
+        elif gs.repetition:
+            gameOver = True
+            drawText(screen, 'Draw by repetition')
+
         clock.tick(MAX_FPS)
         p.display.flip()
 
@@ -169,6 +186,14 @@ def animateMove(move, screen, board, clock):
         p.display.flip()
         clock.tick(60)
 
+
+def drawText(screen, text):
+    font = p.font.SysFont("Helvitca", 32, True, False)
+    textObject = font.render(text, 0, p.Color('Black'))
+    textLocation = p.Rect(0, 0, WIDTH, HEIGHT).move(WIDTH/2-textObject.get_width()/2, HEIGHT/2-textObject.get_height()/2)
+    screen.blit(textObject)
+    textObject = font.render(text, 0, p.Color("Gray"))
+    screen,blit(textObject, textLocation.move(2, 2))
 
 if __name__ == "__main__":
     main()
