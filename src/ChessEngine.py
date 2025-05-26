@@ -1,6 +1,6 @@
 """
-This class is responsible for storing all the information about the current state of a chess game. It will also be responsible for determining the valid moves at the current state.
-It will also keep a move log.
+This class is responsible for storing all the information about the current state of a chess game. It is responsible 
+for determining the valid moves at the current state. It will also keep a move log.
 """
 class GameState():
     
@@ -447,6 +447,9 @@ class GameState():
                     if endPiece[0] != allyColor:
                         moves.append(Move((r, c), (endRow, endCol), self.board))
 
+    '''
+    Checks if a square is currently under attack
+    '''
     def squareUnderAttack(self, r, c):
         enemyColor = 'b' if self.whiteToMove else 'w'
     

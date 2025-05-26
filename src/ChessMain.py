@@ -1,5 +1,5 @@
 """
-This is our main driver file. It will be responsible for handling user input and displaying the current GameState object.   
+This is the main driver file. It is be responsible for handling user input and displaying the current GameState object.   
 """
 import pygame as p
 import ChessEngine
@@ -12,7 +12,7 @@ IMAGES = {}
 COLORS = [(255, 255, 255), (186, 186, 180)] # colors for white and black
 
 '''
-Initialize a global dictionaty of images. This will be called exactly once in the main.
+Initialize a global dictionaty of images. Called exactly once in main.
 '''
 def loadImages():
     pieces = ['wP','wK','wN', 'wB','wQ','wR','bP','bK','bB','bR', 'bN', 'bQ']
@@ -21,7 +21,7 @@ def loadImages():
     #we can now access an image by saying 'IMAGES['wP']'
 
 '''
-The main driver for our code. This will handle user input and updating the graphics
+The main driver of the code. It handles user input and updating the graphics
 '''
 def main():
     p.init()
