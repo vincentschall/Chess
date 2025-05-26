@@ -14,7 +14,7 @@
 ## Additional information
 
   - Pawn promotion: currently auto-promotes to queen.
-  - Moves are displayed on the console, planned to be integrated into UI.
+  - Move Notation is displayed on the console, planned to be integrated into UI.
 
 ## Roadmap
 
@@ -26,6 +26,7 @@
   - [x] Special moves: pawn promotion
   - [x] Square highlighting
   - [x] animations
+  - [x] Correct determination and display of win/draw
   - [ ] Move notation 
   - [ ] Coding an engine: evaluating moves
   - [ ] Integrating engine into UI (bar, review feature)
