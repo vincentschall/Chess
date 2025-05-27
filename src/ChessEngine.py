@@ -545,9 +545,20 @@ class Move():
         return False
              
     def getChessNotation(self):
-        return self.getRankFile(self.startRow, self.startCol) + self.getRankFile(self.endRow, self.endCol)
-        #TODO? complete Notation logic
-        
+        text = ''
+        if self.pieceMoved[1] == 'K' and abs(self.startCol - self.endCol) ==  2:
+            text += '0-0-0' if self.endCol == 2 else '0-0'
+            return text
+        if self.pieceMoved[1] == 'P' and not self.isEnPassantMove:
+            if self.pieceCaptured != '--':
+                text += self.colsToFiles[self.startCol]
+        else:
+            text += self.pieceMoved[1]
+        if self.pieceCaptured != '--':
+            text += 'x'
+        text += self.getRankFile(self.endRow, self.endCol)
+        return text;
+
     def getRankFile(self, r, c):
         return self.colsToFiles[c] + self.rowsToRanks[r]
     
