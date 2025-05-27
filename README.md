@@ -27,7 +27,7 @@
   - [x] Square highlighting
   - [x] animations
   - [x] Correct determination and display of win/draw
-  - [ ] Move notation 
+  - [x] Move notation 
   - [ ] Coding an engine: evaluating moves
   - [ ] Integrating engine into UI (bar, review feature)
   - [ ] Uploading PGN files for rewiew
