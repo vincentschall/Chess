@@ -81,7 +81,7 @@ def main():
                     animate = False
                 if e.key == p.K_r: # reset when 'r' is pressed 
                     gs = ChessEngine.GameState()
-                    validMoves = gs.getValidMoves
+                    validMoves = gs.getValidMoves()
                     squareSelected = ()
                     playerClicks = []
                     moveMade = False
@@ -193,7 +193,7 @@ def drawText(screen, text):
     textLocation = p.Rect(0, 0, WIDTH, HEIGHT).move(WIDTH/2-textObject.get_width()/2, HEIGHT/2-textObject.get_height()/2)
     screen.blit(textObject)
     textObject = font.render(text, 0, p.Color("Gray"))
-    screen,blit(textObject, textLocation.move(2, 2))
+    screen.blit(textObject, textLocation.move(2, 2))
 
 if __name__ == "__main__":
     main()
