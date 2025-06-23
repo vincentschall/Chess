@@ -50,7 +50,7 @@ def main():
     # 1: random move AI
     # more to be added later
     playerWhite = 0
-    playerBlack = 1 # set to AI for testing
+    playerBlack = 0 # set to AI for testing
 
     while(running):
         humanTurn = (
