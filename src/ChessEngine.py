@@ -74,15 +74,15 @@ class GameState():
         if move.pieceMoved[1] == 'P' and abs(move.startRow - move.endRow) == 2:
             self.enPassantPossible = ((move.endRow + move.startRow) // 2, move.startCol) # // for integer division
             
-        else:
-            self.enPassantPossible = ()
-
+        else: 
+            self.enPassantPossible = ()  
+ 
         # update castling rights 
         if move.pieceMoved == 'wK':
             self.whiteCastleKingside = False
             self.whiteCastleQueenside = False
         elif move.pieceMoved == 'bK':
-            self.blackCastleKingside = False
+            self.blackCastleKingside = False 
             self.blackCastleQueenside = False
         elif move.pieceMoved == 'wR':
             if move.startRow == 7 and move.startCol == 0:
