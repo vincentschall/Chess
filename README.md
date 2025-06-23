@@ -14,7 +14,7 @@
 ## Additional information
 
   - Pawn promotion: currently auto-promotes to queen.
-  - Move Notation is displayed on the console, planned to be integrated into UI.
+  - Move Notation and messages (like checkmate) are displayed on the console, planned to be integrated into UI.
 
 ## Roadmap
 
