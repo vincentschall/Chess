@@ -98,15 +98,15 @@ def main():
         if gs.checkmate:
             gameOver = True
             if gs.whiteToMove:
-                drawText(screen, 'Black wins by checkmate')
+                print('Black wins by checkmate')
             else:
-                drawText(screen, 'White wins by checkmate')
+                print('White wins by checkmate')
         elif gs.stalemate:
             gameOver = True
-            drawText(screen, 'Draw by stalemate')
+            print('Draw by stalemate')
         elif gs.repetition:
             gameOver = True
-            drawText(screen, 'Draw by repetition')
+            print('Draw by repetition')
 
         clock.tick(MAX_FPS)
         p.display.flip()
@@ -185,15 +185,6 @@ def animateMove(move, screen, board, clock):
         screen.blit(IMAGES[move.pieceMoved], p.Rect(c * SQ_SIZE, r * SQ_SIZE, SQ_SIZE, SQ_SIZE))
         p.display.flip()
         clock.tick(60)
-
-
-def drawText(screen, text):
-    font = p.font.SysFont("Helvitca", 32, True, False)
-    textObject = font.render(text, 0, p.Color('Black'))
-    textLocation = p.Rect(0, 0, WIDTH, HEIGHT).move(WIDTH/2-textObject.get_width()/2, HEIGHT/2-textObject.get_height()/2)
-    screen.blit(textObject)
-    textObject = font.render(text, 0, p.Color("Gray"))
-    screen.blit(textObject, textLocation.move(2, 2))
 
 if __name__ == "__main__":
     main()

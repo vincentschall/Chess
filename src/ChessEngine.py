@@ -30,8 +30,8 @@ class GameState():
         self.pins = []
         self.checks = []
         
-        self.checkmate = False
-        self.stalemate = False
+        self.checkmate = False 
+        self.stalemate = False 
         self.repetition = False
         
         self.enPassantPossible = () #coordinates where an en passant capture is possible
