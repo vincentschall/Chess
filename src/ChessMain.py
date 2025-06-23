@@ -36,6 +36,7 @@ def main():
     validMoves = gs.getValidMoves()
     moveMade = False #flag variable for when a move is made  
     animate = False #flag variable for when we should animate
+    messagePrinted = False # Flag to ensure message is only sent once
 
     loadImages()
     running = True
@@ -86,7 +87,9 @@ def main():
                     playerClicks = []
                     moveMade = False
                     animate = False
-                    
+                    messagePrinted = False
+                    gameOver = False
+                                       
         if moveMade:
             if animate:
                 animateMove(gs.moveLog[-1], screen, gs.board, clock)
@@ -95,22 +98,26 @@ def main():
                   
         drawGameState(screen, gs, validMoves, sqSelected, gs.moveLog[-1] if gs.moveLog else '')
 
-        if gs.checkmate:
-            gameOver = True
-            if gs.whiteToMove:
-                print('Black wins by checkmate')
-            else:
-                print('White wins by checkmate')
-        elif gs.stalemate:
-            gameOver = True
-            print('Draw by stalemate')
-        elif gs.repetition:
-            gameOver = True
-            print('Draw by repetition')
+        if not messagePrinted:
+            if gs.checkmate:
+                gameOver = True
+                messagePrinted = True
+                if gs.whiteToMove:
+                    print('Black wins by checkmate')
+                else:
+                    print('White wins by checkmate')
+            elif gs.stalemate:
+                gameOver = True
+                messagePrinted  = True
+                print('Draw by stalemate')
+            elif gs.repetition:
+                gameOver = True
+                messagePrinted = True
+                print('Draw by repetition')
 
         clock.tick(MAX_FPS)
         p.display.flip()
-
+        
 '''
 Highlighting square selected and moves for piece selected 
 '''

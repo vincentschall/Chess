@@ -76,7 +76,7 @@ class GameState():
             
         else: 
             self.enPassantPossible = ()  
- 
+        
         # update castling rights 
         if move.pieceMoved == 'wK':
             self.whiteCastleKingside = False
@@ -192,6 +192,15 @@ class GameState():
                     moves.remove(moves[i])
         else:
             moves = self.getAllPossibleMoves()
+            
+        if len(moves) == 0:
+            if self.inCheck:
+                self.checkmate = True
+            else:
+                self.stalemate = True
+        else:
+            self.checkmate = False;
+            self.stalemate = False;
 
         return moves
         
