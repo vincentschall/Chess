@@ -52,7 +52,7 @@ def main():
     playerBlack = 1
     
     # depth of the AI (0 is random Move)
-    AI_strength = 0
+    AI_depth = 0
 
     while(running):
         
@@ -108,10 +108,10 @@ def main():
         
         # AI
         if not gameOver and not humanTurn:
-            if AI_strength == 0:
+            if AI_depth == 0:
                 AIMove = AI.findRandomMove(validMoves)
             else:
-                AIMove = AI.findBestMove(validMoves)
+                AIMove = AI.findBestMove(gs, validMoves, AI_depth)
             gs.makeMove(AIMove)
             moveMade = True
             animate = True       
