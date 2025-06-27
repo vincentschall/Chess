@@ -2,7 +2,7 @@
 This is the main driver file. It is be responsible for handling user input and displaying the current GameState object.   
 """
 import pygame as p
-import ChessEngine, BlunderAI
+import ChessEngine, AI
 
 WIDTH = HEIGHT = 512 #400 is another good option
 DIMENSION = 8 
@@ -50,7 +50,7 @@ def main():
     # 1: random move AI
     # more to be added later
     playerWhite = 0
-    playerBlack = 0 # set to AI for testing
+    playerBlack = 0
 
     while(running):
         humanTurn = (
@@ -102,9 +102,9 @@ def main():
                     messagePrinted = False
                     gameOver = False
         
-         # AI
+        # AI
         if not gameOver and not humanTurn:
-            AIMove = BlunderAI.findRandomMove(validMoves)
+            AIMove = AI.findRandomMove(validMoves)
             gs.makeMove(AIMove)
             moveMade = True
             animate = True       
