@@ -4,4 +4,4 @@ def findRandomMove(validMoves):
     return validMoves[random.randint(0, len(validMoves)-1)]
 
 def findBestMove(validMoves):
-    return
+    return validMoves[1]

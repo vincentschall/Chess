@@ -45,12 +45,14 @@ def main():
     
     gameOver = False
     
-    # flags that determine if a player is human or AI (and if so which one)
+    # flags that determine if a player is human or AI
     # 0: human
-    # 1: random move AI
-    # more to be added later
+    # 1: AI
     playerWhite = 0
-    playerBlack = 0
+    playerBlack = 1
+    
+    # depth of the AI (0 is random Move)
+    AI_strength = 0
 
     while(running):
         
@@ -59,7 +61,7 @@ def main():
             )or (
             not gs.whiteToMove and playerBlack == 0
             )
-            
+              
         for e in p.event.get():
             if e.type == p.QUIT:
                 running = False
@@ -106,7 +108,10 @@ def main():
         
         # AI
         if not gameOver and not humanTurn:
-            AIMove = AI.findRandomMove(validMoves)
+            if AI_strength == 0:
+                AIMove = AI.findRandomMove(validMoves)
+            else:
+                AIMove = AI.findBestMove(validMoves)
             gs.makeMove(AIMove)
             moveMade = True
             animate = True       
