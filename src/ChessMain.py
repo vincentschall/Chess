@@ -53,11 +53,13 @@ def main():
     playerBlack = 0
 
     while(running):
+        
         humanTurn = (
             gs.whiteToMove and playerWhite == 0
             )or (
             not gs.whiteToMove and playerBlack == 0
             )
+            
         for e in p.event.get():
             if e.type == p.QUIT:
                 running = False
