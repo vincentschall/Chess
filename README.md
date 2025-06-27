@@ -29,6 +29,7 @@
   - [x] Correct determination and display of win/draw
   - [x] Move notation 
   - [x] Random move engine
+  - [ ] Multithreading the AI
   - [ ] Coding an engine: evaluating moves
   - [ ] Integrating engine into UI (bar, review feature)
   - [ ] Uploading PGN files for rewiew
